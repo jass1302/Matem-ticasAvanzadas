@@ -40,7 +40,7 @@ public class Graficadora {
          
          for(Complejo c:array){
            vectorSeries.add(0,0,c.getRe(), c.getImg());
-           System.out.println(c.toPolarString());
+           System.out.println(c.toRecString());
        }
          dataSet.addSeries(vectorSeries);
          r = new VectorRenderer();

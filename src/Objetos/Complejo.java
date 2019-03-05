@@ -93,10 +93,15 @@ public class Complejo {
     public String toPolarString(){
         return ""+this.modulo+"(cos("+this.angulo+") + isen("+this.angulo+"))";
     }
+    public String toRecString(){
+        if(this.img>=0) return "("+this.re+" + "+this.img+"i)";
+        else return "("+this.re+" + "+this.img+"i)";
+        
+    }
     
     public void polarToRec(){
-        this.re = this.modulo*(float)Math.cos(this.angulo);
-        this.img = this.modulo*(float)Math.sin(this.angulo);
+        this.re = (float) (this.modulo*Math.cos(Math.toRadians(this.angulo)));
+        this.img = (float) (this.modulo*Math.sin(Math.toRadians(this.angulo)));
     }
     
 }

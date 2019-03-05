@@ -8,6 +8,7 @@ package GUI;
 import Herramientas.Operaciones;
 import Herramientas.expresionRegular;
 import Objetos.Complejo;
+import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import org.jfree.chart.ChartPanel;
@@ -306,9 +307,9 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 351, -1, 50));
 
         jLabel2.setText("Con n=");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 369, 80, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 369, 40, -1));
 
-        n.setText("1");
+        n.setText("2");
         getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 366, 30, -1));
 
         jLabel3.setText("Resultado");
@@ -580,12 +581,14 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       Operaciones A = new Operaciones();
+       if(Integer.parseInt(n.getText())>=2){
+        Operaciones A = new Operaciones();
        A.raices(Double.parseDouble(n.getText()), ans);
        jTextArea1.setText("");
        G = new Graficadora();
        G.addVectors(A.getNraices());
-       ChartPanel panel = new ChartPanel(G.Chart);        
+       ChartPanel panel = new ChartPanel(G.Chart);
+       //panel.setPreferredSize(new Dimension(10, 10));
         jPanel1.setLayout(new java.awt.BorderLayout());
         jPanel1.add(panel);   
         jPanel1.validate();
@@ -594,6 +597,16 @@ public class Calculadora extends javax.swing.JFrame {
             jTextArea1.setText(jTextArea1.getText()+"z'"+n+" = "+c.toPolarString()+"\n");
             n++;
         }
+        jTextArea1.setText(jTextArea1.getText()+"---------------------------------------------------------------------------\n");
+        n=1;
+        for(Complejo c:A.getNraices()){
+            jTextArea1.setText(jTextArea1.getText()+"z'"+n+" = "+c.toRecString()+"\n");
+            n++;
+        }
+        
+       }else if(Integer.parseInt(n.getText())==1){
+           graficar();
+       }else if(Integer.parseInt(n.getText())==0)jTextArea1.setText("Undefined");
        
        
     }//GEN-LAST:event_jButton3ActionPerformed
