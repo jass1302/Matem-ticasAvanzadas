@@ -21,6 +21,11 @@ public class Complejo {
         raices = new ArrayList();
     }
     
+    public Complejo(double r,double thetha){
+        this.modulo = (float)r;
+        this.angulo = thetha;
+    }
+    
     public Complejo conjugado(){
         return new Complejo(getRe(),getImg()*-1);
     }
@@ -83,6 +88,15 @@ public class Complejo {
      */
     public double getAngulo() {
         return angulo;
+    }
+    
+    public String toPolarString(){
+        return ""+this.modulo+"(cos("+this.angulo+") + isen("+this.angulo+"))";
+    }
+    
+    public void polarToRec(){
+        this.re = this.modulo*(float)Math.cos(this.angulo);
+        this.img = this.modulo*(float)Math.sin(this.angulo);
     }
     
 }

@@ -120,6 +120,9 @@ public class Calculadora extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -353,6 +356,15 @@ public class Calculadora extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 240, 51, 20));
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 370, 70));
+
+        jLabel8.setText("Raices");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -568,6 +580,21 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Operaciones A = new Operaciones();
+       A.raices(Double.parseDouble(n.getText()), ans);
+       jTextArea1.setText("");
+       G = new Graficadora();
+       G.addVectors(A.getNraices());
+       ChartPanel panel = new ChartPanel(G.Chart);        
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(panel);   
+        jPanel1.validate();
+        int n=1;
+        for(Complejo c:A.getNraices()){
+            jTextArea1.setText(jTextArea1.getText()+"z'"+n+" = "+c.toPolarString()+"\n");
+            n++;
+        }
+       
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -635,7 +662,10 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mas;
     private javax.swing.JButton menos;
     private javax.swing.JTextField n;

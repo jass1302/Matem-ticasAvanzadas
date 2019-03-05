@@ -1,5 +1,7 @@
 package GUI;
 
+import Objetos.Complejo;
+import java.util.ArrayList;
 import org.jfree.data.xy.VectorSeries;
 import org.jfree.data.xy.VectorSeriesCollection;
 import org.jfree.chart.renderer.xy.VectorRenderer;
@@ -31,6 +33,22 @@ public class Graficadora {
          Chart = new JFreeChart(xyPlot);
          //createFrame();
     }
+    
+    public void addVectors(ArrayList<Complejo> array){
+        VectorSeriesCollection dataSet= new VectorSeriesCollection();
+        VectorSeries vectorSeries=new VectorSeries("");
+         
+         for(Complejo c:array){
+           vectorSeries.add(0,0,c.getRe(), c.getImg());
+           System.out.println(c.toPolarString());
+       }
+         dataSet.addSeries(vectorSeries);
+         r = new VectorRenderer();
+         xyPlot = new XYPlot(dataSet, new NumberAxis("Re Axis"), new NumberAxis("Im Axis"), r);
+         Chart = new JFreeChart(xyPlot);
+         
+    }
+    
    
     
     

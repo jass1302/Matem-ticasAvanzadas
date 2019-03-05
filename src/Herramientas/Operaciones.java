@@ -6,6 +6,7 @@
 package Herramientas;
 
 import Objetos.Complejo;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +14,11 @@ import Objetos.Complejo;
  */
 public class Operaciones {
     
+    public static ArrayList<Complejo>  nraices;
+
+    public static ArrayList<Complejo> getNraices() {
+        return nraices;
+    }
     
     public static Complejo suma(Complejo z1, Complejo z2){
         Complejo res = new Complejo(0,0);
@@ -43,5 +49,21 @@ public class Operaciones {
        res.setImg(numerador.getImg()/denominador.getRe());
         
         return res;
+    }
+    public static void raices(double n,Complejo z1){
+        double r = Math.pow(z1.modulo(),1/n);
+        double base=z1.formaPolar(),thetha;
+        for (double i = 0; i < n; i++) {
+            thetha = (base+(360*i))/n;
+            Complejo complex = new Complejo(r,thetha);
+            complex.polarToRec();
+            //System.out.println(complex.toPolarString());
+            nraices.add(complex);
+            
+        }
+    }
+
+    public Operaciones() {
+        this.nraices = new ArrayList();
     }
 }
