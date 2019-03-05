@@ -14,19 +14,19 @@ import Objetos.Complejo;
 public class Operaciones {
     
     
-    public Complejo suma(Complejo z1, Complejo z2){
+    public static Complejo suma(Complejo z1, Complejo z2){
         Complejo res = new Complejo(0,0);
          res.setRe(z1.getRe()+z2.getRe());
          res.setImg(z1.getImg()+z2.getImg());
         return res;
     }
-     public Complejo resta(Complejo z1, Complejo z2){
+     public static Complejo resta(Complejo z1, Complejo z2){
          Complejo res = new Complejo(0,0);
          res.setRe(z1.getRe()-z2.getRe());
          res.setImg(z1.getImg()-z2.getImg());
         return res;
     }
-      public Complejo multiplicacion(Complejo z1, Complejo z2){
+      public static Complejo multiplicacion(Complejo z1, Complejo z2){
           Complejo res = new Complejo(0,0);
          res.setRe((z1.getRe() * z2.getRe()) + ((z1.getImg()*z2.getImg())*-1));
          res.setImg(
@@ -34,7 +34,7 @@ public class Operaciones {
          );
         return res;
     }
-    public Complejo division(Complejo z1, Complejo z2){
+    public static Complejo division(Complejo z1, Complejo z2){
         Complejo res = new Complejo(0,0);
         Complejo denominador, numerador;
         numerador = multiplicacion(z1,z2.conjugado());

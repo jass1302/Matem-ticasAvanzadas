@@ -29,9 +29,10 @@ public class Complejo {
     }
     public double formaPolar(){  // Creo que el nombre no sería del todo correcto, pero en teoría con esto ya están calculados todos los datos para mostrar el complejo en su forma trigonométrica,
                                  //pero supongo que las forma será un truco de la interfaz? Porque si pongo la operacion completa pues la va calcular :v
-        float cos = re/getModulo();
-        float sin = img/getModulo();
-        return this.angulo = Math.ceil(Math.toDegrees(Math.atan(sin/cos)));
+        //float cos = re/getModulo();
+        //float sin = img/getModulo();
+        //return this.angulo = Math.ceil(Math.toDegrees(Math.atan(sin/cos)));
+        return this.angulo = Math.ceil(Math.toDegrees(Math.atan(this.img/this.re)));
     }
     public void nRaices(int k){
         double α; // Angulo de k-Raices 
