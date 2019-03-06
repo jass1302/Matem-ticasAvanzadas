@@ -24,6 +24,8 @@ public class Complejo {
     public Complejo(double r,double thetha){
         this.modulo = (float)r;
         this.angulo = thetha;
+        System.out.println("Modulo: "+this.modulo);
+        System.out.println("Angulo: "+this.angulo);
     }
     
     public Complejo conjugado(){

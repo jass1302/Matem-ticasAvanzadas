@@ -27,7 +27,8 @@ public class Calculadora extends javax.swing.JFrame {
     Complejo ans = new Complejo(0,0);
     Complejo ans1 = new Complejo(0,0);
     boolean focused;
-    char op = '+';
+    boolean rec =true;
+    char op = ' ';
     
     public Calculadora() {
         initComponents();
@@ -136,6 +137,11 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         real.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        real.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                realActionPerformed(evt);
+            }
+        });
         real.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 realKeyTyped(evt);
@@ -389,20 +395,33 @@ public class Calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
+        if (rec==true) {
         ans1.setRe(Float.parseFloat(real.getText()));
-        ans1.setImg(Float.parseFloat(imaginario.getText()));
+        ans1.setImg(Float.parseFloat(imaginario.getText()));  
+        }else{
+            ans = new Complejo(Double.parseDouble(real.getText()),Double.parseDouble(imaginario.getText()));
+            ans.polarToRec();
+            mostrar();
+        }
         switch(op){
             case '+':
                 ans = Operaciones.suma(ans, ans1);
+                op = ' ';
                 break;
             case '-':
                 ans = Operaciones.resta(ans, ans1);
+                op = ' ';
                 break;
             case 'x':
                 ans = Operaciones.multiplicacion(ans, ans1);
+                op = ' ';
                 break;
             case '/':
                 ans = Operaciones.division(ans, ans1);
+                op = ' ';
+                break;
+            default:
+                op = ' ';
                 break;
         }
         mostrar();
@@ -478,9 +497,7 @@ public class Calculadora extends javax.swing.JFrame {
          op = '+';
         //System.out.println(ans.getRe()+" "+ ans.getImg());
         mostrar();
-        
-        
-        
+       
         
     }//GEN-LAST:event_masActionPerformed
 
@@ -630,12 +647,18 @@ public class Calculadora extends javax.swing.JFrame {
             jLabel7.setText("Re");
             jLabel5.setText("Im");
             jLabel1.setText("i");
+            rec=true;
         }else{
+            rec=false;
             jLabel7.setText("r");
             jLabel5.setText("θ");
-            jLabel1.setText("");
+            jLabel1.setText("");   
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_realActionPerformed
 
     /**
      * @param args the command line arguments
