@@ -12,7 +12,7 @@ public class mainClass {
     public static void main(String[] args) {
     
         Calculadora vista = new Calculadora();
-        vista.setBounds(0, 0, 1020, 560);
+        vista.setBounds(0, 0, 1020, 600);
         vista.setVisible(true);
         
         

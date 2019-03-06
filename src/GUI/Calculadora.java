@@ -67,6 +67,7 @@ public class Calculadora extends javax.swing.JFrame {
         else Pol.setText(""+ans.modulo()+"( cos("+ans.formaPolar()+")+ i sen("+ans.formaPolar()+") )");
         if(ans.getImg()>=0)Rec.setText("( "+ans.getRe()+" + "+ans.getImg()+"i )");
         else Rec.setText("( "+ans.getRe()+" "+ans.getImg()+"i )");
+        Eu.setText(""+ans.modulo()+" e^(i"+ans.getAngulo()+")");
     }
     
     public void graficar(){
@@ -112,7 +113,6 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         n = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         Pol = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Rec = new javax.swing.JLabel();
@@ -124,10 +124,15 @@ public class Calculadora extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        Eu = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         real.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -136,7 +141,7 @@ public class Calculadora extends javax.swing.JFrame {
                 realKeyTyped(evt);
             }
         });
-        getContentPane().add(real, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 45, 106, -1));
+        getContentPane().add(real, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 106, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,7 +162,7 @@ public class Calculadora extends javax.swing.JFrame {
                 igualActionPerformed(evt);
             }
         });
-        getContentPane().add(igual, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 297, 220, 50));
+        getContentPane().add(igual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 50));
 
         cero.setText("0");
         cero.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +170,7 @@ public class Calculadora extends javax.swing.JFrame {
                 ceroActionPerformed(evt);
             }
         });
-        getContentPane().add(cero, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 240, 51, 51));
+        getContentPane().add(cero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 50, 50));
 
         uno.setText("1");
         uno.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +178,7 @@ public class Calculadora extends javax.swing.JFrame {
                 unoActionPerformed(evt);
             }
         });
-        getContentPane().add(uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 183, 51, 50));
+        getContentPane().add(uno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 50, 50));
 
         dos.setText("2");
         dos.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +186,7 @@ public class Calculadora extends javax.swing.JFrame {
                 dosActionPerformed(evt);
             }
         });
-        getContentPane().add(dos, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 183, 50, 51));
+        getContentPane().add(dos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 50, 50));
 
         tres.setText("3");
         tres.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +194,7 @@ public class Calculadora extends javax.swing.JFrame {
                 tresActionPerformed(evt);
             }
         });
-        getContentPane().add(tres, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 183, 50, 50));
+        getContentPane().add(tres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 50, 50));
 
         cuatro.setText("4");
         cuatro.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +202,7 @@ public class Calculadora extends javax.swing.JFrame {
                 cuatroActionPerformed(evt);
             }
         });
-        getContentPane().add(cuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 127, 50, 50));
+        getContentPane().add(cuatro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 50));
 
         cinco.setText("5");
         cinco.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +210,7 @@ public class Calculadora extends javax.swing.JFrame {
                 cincoActionPerformed(evt);
             }
         });
-        getContentPane().add(cinco, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 127, 50, 50));
+        getContentPane().add(cinco, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 50, 50));
 
         uno5.setText("6");
         uno5.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +218,7 @@ public class Calculadora extends javax.swing.JFrame {
                 uno5ActionPerformed(evt);
             }
         });
-        getContentPane().add(uno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 127, 50, 50));
+        getContentPane().add(uno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 50, 50));
 
         siete.setText("7");
         siete.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +226,7 @@ public class Calculadora extends javax.swing.JFrame {
                 sieteActionPerformed(evt);
             }
         });
-        getContentPane().add(siete, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 71, 50, 50));
+        getContentPane().add(siete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 50));
 
         ocho.setText("8");
         ocho.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +234,7 @@ public class Calculadora extends javax.swing.JFrame {
                 ochoActionPerformed(evt);
             }
         });
-        getContentPane().add(ocho, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 71, 50, 50));
+        getContentPane().add(ocho, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 50, 50));
 
         nueve.setText("9");
         nueve.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +242,7 @@ public class Calculadora extends javax.swing.JFrame {
                 nueveActionPerformed(evt);
             }
         });
-        getContentPane().add(nueve, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 71, 50, 50));
+        getContentPane().add(nueve, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 50, 50));
 
         mas.setText("+");
         mas.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +250,7 @@ public class Calculadora extends javax.swing.JFrame {
                 masActionPerformed(evt);
             }
         });
-        getContentPane().add(mas, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 71, 50, 50));
+        getContentPane().add(mas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 50, 50));
 
         menos.setText("-");
         menos.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +258,7 @@ public class Calculadora extends javax.swing.JFrame {
                 menosActionPerformed(evt);
             }
         });
-        getContentPane().add(menos, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 127, 50, 50));
+        getContentPane().add(menos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 50, 50));
 
         por.setText("x");
         por.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +266,7 @@ public class Calculadora extends javax.swing.JFrame {
                 porActionPerformed(evt);
             }
         });
-        getContentPane().add(por, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 183, 50, 51));
+        getContentPane().add(por, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 50, 50));
 
         imaginario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         imaginario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -269,10 +274,10 @@ public class Calculadora extends javax.swing.JFrame {
                 imaginarioKeyTyped(evt);
             }
         });
-        getContentPane().add(imaginario, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 45, 106, -1));
+        getContentPane().add(imaginario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 106, -1));
 
         jLabel1.setText("i");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 48, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
 
         ce.setText("CE");
         ce.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +285,7 @@ public class Calculadora extends javax.swing.JFrame {
                 ceActionPerformed(evt);
             }
         });
-        getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 240, 50, 51));
+        getContentPane().add(ce, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 50, 50));
 
         entre.setText("/");
         entre.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +293,7 @@ public class Calculadora extends javax.swing.JFrame {
                 entreActionPerformed(evt);
             }
         });
-        getContentPane().add(entre, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 240, 50, 51));
+        getContentPane().add(entre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 50, 50));
 
         jButton1.setText("Z'");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +301,7 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 51, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 50, 50));
 
         jButton3.setText("Raíz");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -304,34 +309,31 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 351, -1, 50));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 50));
 
         jLabel2.setText("Con n=");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 369, 40, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 40, -1));
 
         n.setText("2");
-        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 366, 30, -1));
+        getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 30, -1));
 
         jLabel3.setText("Resultado");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
-
-        jLabel4.setText("Forma Polar: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         Pol.setText("0(cos(0)+isen(0))");
-        getContentPane().add(Pol, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
+        getContentPane().add(Pol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, -1, -1));
 
         jLabel6.setText("Forma Rectangular: ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
         Rec.setText("(0+0i)");
-        getContentPane().add(Rec, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
+        getContentPane().add(Rec, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
 
         jLabel5.setText("Im");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 20, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
         jLabel7.setText("Re");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 20, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jButton4.setText("(-)");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +341,7 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 262, 51, 28));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 50, 30));
 
         jButton5.setText("Graficar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -347,7 +349,7 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
 
         jButton6.setText(".");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -355,7 +357,7 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 240, 51, 20));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 50, 20));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -365,6 +367,23 @@ public class Calculadora extends javax.swing.JFrame {
 
         jLabel8.setText("Raices");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, -1, -1));
+
+        jLabel9.setText("Forma Euler: ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+
+        jLabel10.setText("Forma Trigonométrica: ");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+
+        Eu.setText("0 e^(i0)");
+        getContentPane().add(Eu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Forma Rectangular", "Forma Euler/Trigonométrica" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -379,7 +398,7 @@ public class Calculadora extends javax.swing.JFrame {
             case '-':
                 ans = Operaciones.resta(ans, ans1);
                 break;
-            case '*':
+            case 'x':
                 ans = Operaciones.multiplicacion(ans, ans1);
                 break;
             case '/':
@@ -392,37 +411,15 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void realKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_realKeyTyped
         // TODO add your handling code here:
-        /*char validar = evt.getKeyChar();
+        char validar = evt.getKeyChar();
         boolean sumita = false;
         System.out.println(validar);
-        /*if (validar == '+') {
-            siete.doClick();
-        }
-        if(Character.isDigit(validar) || validar == 'i' || validar == '+' || validar == '-' || validar == ' '){
+        if(Character.isDigit(validar)||validar=='-'){
             
         }else{
             evt.consume();
         }
-        switch(validar){
-            case '+':
-                ans.setRe(Float.parseFloat(real.getText()));
-                ans.setImg(Float.parseFloat(imaginario.getText()));
-                break;
-            case '-':
-                ans.setRe(Float.parseFloat(real.getText()));
-                ans.setImg(Float.parseFloat(imaginario.getText()));
-                break;
-            case '*':
-                ans.setRe(Float.parseFloat(real.getText()));
-                ans.setImg(Float.parseFloat(imaginario.getText()));
-                break;
-            case '/':
-                ans.setRe(Float.parseFloat(real.getText()));
-                ans.setImg(Float.parseFloat(imaginario.getText()));
-                break;
-        }*/
-        //System.out.println(ans.getRe()+" "+ans.getImg()+"i");
-        
+                
     }//GEN-LAST:event_realKeyTyped
 
     private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
@@ -456,6 +453,15 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void imaginarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_imaginarioKeyTyped
         // TODO add your handling code here:
+         // TODO add your handling code here:
+        char validar = evt.getKeyChar();
+        boolean sumita = false;
+        System.out.println(validar);
+        if(Character.isDigit(validar)||validar=='-'){
+            
+        }else{
+            evt.consume();
+        }
     }//GEN-LAST:event_imaginarioKeyTyped
 
     private void masActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masActionPerformed
@@ -616,6 +622,21 @@ public class Calculadora extends javax.swing.JFrame {
         else imaginario.setText(imaginario.getText()+".");
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        //if(jComboBox1.getSize()==)
+        //System.out.println(jComboBox1.getSelectedItem());
+        if (jComboBox1.getSelectedItem()=="Forma Rectangular") {
+            //System.out.println("AHHH");
+            jLabel7.setText("Re");
+            jLabel5.setText("Im");
+            jLabel1.setText("i");
+        }else{
+            jLabel7.setText("r");
+            jLabel5.setText("θ");
+            jLabel1.setText("");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -652,6 +673,7 @@ public class Calculadora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Eu;
     private javax.swing.JLabel Pol;
     private javax.swing.JLabel Rec;
     private javax.swing.JButton ce;
@@ -668,14 +690,16 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
