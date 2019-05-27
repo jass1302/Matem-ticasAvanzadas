@@ -1,20 +1,43 @@
 package principal;
 
 import GUI.Calculadora;
+import GUI.GUI_HUB;
+import GUI.ScatterPlot;
+import GUI.SerieFourier;
+import Herramientas.Fourier;
 import Objetos.Complejo;
 import Herramientas.Operaciones;
+import Herramientas.rungeK;
+import metodosIntegracion.Trapecio;
 
-/**
- *
- * @author mijum
- */
+
+
 public class mainClass {
     public static void main(String[] args) {
     
-        Calculadora vista = new Calculadora();
-        vista.setBounds(0, 0, 1020, 600);
-        vista.setVisible(true);
+        double[] tiempo = {1,5,9,1,32};
+        String func = "x^2+x+1";
+//        
+            
         
-        
+//            Trapecio T = new Trapecio();
+//            System.out.println(T.metodoT("-1", "1",func,"10000"));
+//            Fourier F = new Fourier(5, -1, 3, func);
+//            ScatterPlot plot = new ScatterPlot("Fourier", F.createGraph(100));
+//            plot.pack();
+//            plot.setVisible(true);
+             //F.pruebaFX(100);
+             
+             SerieFourier FGUI = new SerieFourier();
+             FGUI.setTitle("Series de Fourier");
+             FGUI.setVisible(true);
+             
+            
+       // GUI_HUB vista = new GUI_HUB();
+        //vista.setVisible(true);       
+        // CAMPO DE PRUEBAS --RUNGEKUTTA
+//            
     }
+    
+    
 }

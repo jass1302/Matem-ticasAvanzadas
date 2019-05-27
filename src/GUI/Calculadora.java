@@ -31,6 +31,7 @@ public class Calculadora extends javax.swing.JFrame {
     char op = ' ';
     
     public Calculadora() {
+        this.setTitle("Calculadora Números Complejos");
         initComponents();
         graficar();
         real.addFocusListener(new FocusListener(){
@@ -61,19 +62,34 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
+    public Complejo checar(Complejo z){
+        if (rec==true) {
+            System.out.println("ahhh");
+        z.setRe(Float.parseFloat(real.getText()));
+        z.setImg(Float.parseFloat(imaginario.getText()));
+        mostrar();
+        }else if(rec==false){
+            System.out.println("POLAAAAAA");
+            z = new Complejo(Double.parseDouble(real.getText()),Double.parseDouble(imaginario.getText()));
+            z.polarToRec();
+            mostrar();
+        }
+        return z;
+    }
+    
     public void mostrar(){
         real.setText("");
         imaginario.setText("");
         if(ans.getImg()==0&&ans.getRe()==0) Pol.setText("0");
-        else Pol.setText(""+ans.modulo()+"( cos("+ans.formaPolar()+")+ i sen("+ans.formaPolar()+") )");
-        if(ans.getImg()>=0)Rec.setText("( "+ans.getRe()+" + "+ans.getImg()+"i )");
-        else Rec.setText("( "+ans.getRe()+" "+ans.getImg()+"i )");
-        Eu.setText(""+ans.modulo()+" e^(i"+ans.getAngulo()+")");
+        else Pol.setText(""+(float)ans.modulo()+"( cos("+ans.formaPolar()+")+ i sen("+ans.formaPolar()+") )");
+        if(ans.getImg()>=0)Rec.setText("( "+(float)ans.getRe()+" + "+(float)ans.getImg()+"i )");
+        else Rec.setText("( "+(float)ans.getRe()+" "+ans.getImg()+"i )");
+        Eu.setText(""+(float)ans.modulo()+" e^(i"+ans.getAngulo()+")");
     }
     
     public void graficar(){
         Graficadora G = new Graficadora();
-        G.addVector(ans.getRe(), ans.getImg());
+        G.addVector((float)ans.getRe(), (float)ans.getImg());
         ChartPanel panel = new ChartPanel(G.Chart);        
         jPanel1.setLayout(new java.awt.BorderLayout());
         jPanel1.add(panel);   
@@ -129,6 +145,10 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         Eu = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton7 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        pot = new javax.swing.JTextField();
+        jButton8 = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -309,13 +329,13 @@ public class Calculadora extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 50, 50));
 
-        jButton3.setText("Raíz");
+        jButton3.setText("Potencia");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 50));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, 50));
 
         jLabel2.setText("Con n=");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 40, -1));
@@ -324,16 +344,16 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().add(n, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 30, -1));
 
         jLabel3.setText("Resultado");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         Pol.setText("0(cos(0)+isen(0))");
-        getContentPane().add(Pol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, -1, -1));
+        getContentPane().add(Pol, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
 
         jLabel6.setText("Forma Rectangular: ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
 
         Rec.setText("(0+0i)");
-        getContentPane().add(Rec, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
+        getContentPane().add(Rec, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, -1, -1));
 
         jLabel5.setText("Im");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
@@ -355,7 +375,7 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 510, -1, -1));
 
         jButton6.setText(".");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -375,13 +395,13 @@ public class Calculadora extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, -1, -1));
 
         jLabel9.setText("Forma Euler: ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
 
         jLabel10.setText("Forma Trigonométrica: ");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
 
         Eu.setText("0 e^(i0)");
-        getContentPane().add(Eu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
+        getContentPane().add(Eu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Forma Rectangular", "Forma Euler/Trigonométrica" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +411,28 @@ public class Calculadora extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, -1));
 
+        jButton7.setText("Raíz");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 50));
+
+        jLabel4.setText("Con n=");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 40, -1));
+
+        pot.setText("2");
+        getContentPane().add(pot, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 30, -1));
+
+        jButton8.setText("Menú Principal");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -398,7 +440,8 @@ public class Calculadora extends javax.swing.JFrame {
         if (rec==true) {
         ans1.setRe(Float.parseFloat(real.getText()));
         ans1.setImg(Float.parseFloat(imaginario.getText()));  
-        }else{
+        }else if(rec==false){
+            System.out.println("POLAAAAAA");
             ans = new Complejo(Double.parseDouble(real.getText()),Double.parseDouble(imaginario.getText()));
             ans.polarToRec();
             mostrar();
@@ -433,7 +476,7 @@ public class Calculadora extends javax.swing.JFrame {
         char validar = evt.getKeyChar();
         boolean sumita = false;
         System.out.println(validar);
-        if(Character.isDigit(validar)||validar=='-'){
+        if(Character.isDigit(validar)||validar=='-'||validar=='.'){
             
         }else{
             evt.consume();
@@ -455,11 +498,13 @@ public class Calculadora extends javax.swing.JFrame {
     private void menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosActionPerformed
         if(ans.getRe()==0 && ans.getImg()==0){
             //System.out.println("AHH");
-            ans.setImg(Float.parseFloat(imaginario.getText()));
-            ans.setRe(Float.parseFloat(real.getText()));
+//            ans.setImg(Float.parseFloat(imaginario.getText()));
+//            ans.setRe(Float.parseFloat(real.getText()));
+            ans = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
         }else{
-            ans1.setImg(Float.parseFloat(imaginario.getText()));
-            ans1.setRe(Float.parseFloat(real.getText()));
+//            ans1.setImg(Float.parseFloat(imaginario.getText()));
+//            ans1.setRe(Float.parseFloat(real.getText()));
+               ans1 = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
              ans = Operaciones.resta(ans, ans1);
                     
         }
@@ -476,7 +521,7 @@ public class Calculadora extends javax.swing.JFrame {
         char validar = evt.getKeyChar();
         boolean sumita = false;
         System.out.println(validar);
-        if(Character.isDigit(validar)||validar=='-'){
+        if(Character.isDigit(validar)||validar=='-' ||validar=='.'){
             
         }else{
             evt.consume();
@@ -486,12 +531,15 @@ public class Calculadora extends javax.swing.JFrame {
     private void masActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masActionPerformed
         if(ans.getRe()==0 && ans.getImg()==0){
             //System.out.println("AHH");
-            ans.setImg(Float.parseFloat(imaginario.getText()));
-            ans.setRe(Float.parseFloat(real.getText()));
+//            ans.setImg(Float.parseFloat(imaginario.getText()));
+//            ans.setRe(Float.parseFloat(real.getText()));
+ans = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
         }else{
-            ans1.setImg(Float.parseFloat(imaginario.getText()));
-            ans1.setRe(Float.parseFloat(real.getText()));
-             ans = Operaciones.suma(ans, ans1);
+            
+//            ans1.setImg(Float.parseFloat(imaginario.getText()));
+//            ans1.setRe(Float.parseFloat(real.getText()));
+            ans1 = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText()))); 
+            ans = Operaciones.suma(ans, ans1);
                     
         }
          op = '+';
@@ -504,12 +552,14 @@ public class Calculadora extends javax.swing.JFrame {
     private void porActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porActionPerformed
         if(ans.getRe()==0 && ans.getImg()==0){
             //System.out.println("AHH");
-            ans.setImg(Float.parseFloat(imaginario.getText()));
-            ans.setRe(Float.parseFloat(real.getText()));
+//            ans.setImg(Float.parseFloat(imaginario.getText()));
+//            ans.setRe(Float.parseFloat(real.getText()));
+ans = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
         }else{
-            ans1.setImg(Float.parseFloat(imaginario.getText()));
-            ans1.setRe(Float.parseFloat(real.getText()));
-             ans = Operaciones.multiplicacion(ans, ans1);
+//            ans1.setImg(Float.parseFloat(imaginario.getText()));
+//            ans1.setRe(Float.parseFloat(real.getText()));
+ans1 = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
+ans = Operaciones.multiplicacion(ans, ans1);
                     
         }
         //System.out.println(ans.getRe()+" "+ ans.getImg());
@@ -521,12 +571,14 @@ public class Calculadora extends javax.swing.JFrame {
     private void entreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entreActionPerformed
         if(ans.getRe()==0 && ans.getImg()==0){
             //System.out.println("AHH");
-            ans.setImg(Float.parseFloat(imaginario.getText()));
-            ans.setRe(Float.parseFloat(real.getText()));
+//            ans.setImg(Float.parseFloat(imaginario.getText()));
+//            ans.setRe(Float.parseFloat(real.getText()));
+ans = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
         }else{
-            ans1.setImg(Float.parseFloat(imaginario.getText()));
-            ans1.setRe(Float.parseFloat(real.getText()));
-             ans = Operaciones.division(ans, ans1);
+//            ans1.setImg(Float.parseFloat(imaginario.getText()));
+//            ans1.setRe(Float.parseFloat(real.getText()));
+ans1 = checar(new Complejo(Float.parseFloat(real.getText()),Float.parseFloat(imaginario.getText())));
+ans = Operaciones.division(ans, ans1);
                     
         }
         //System.out.println(ans.getRe()+" "+ ans.getImg());
@@ -604,7 +656,44 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       if(Integer.parseInt(n.getText())>=2){
+       
+       //ans.setImg(Float.valueOf(imaginario.getText()));
+       //ans.setRe(Float.valueOf(real.getText()));
+       
+       ans = Operaciones.potencia(Integer.valueOf(pot.getText()), ans.getModulo(),ans.getAngulo());
+        mostrar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if(focused)real.setText(real.getText()+".");
+        else imaginario.setText(imaginario.getText()+".");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        //if(jComboBox1.getSize()==)
+        //System.out.println(jComboBox1.getSelectedItem());
+        if (jComboBox1.getSelectedItem()=="Forma Rectangular") {
+            System.out.println("A");
+            jLabel7.setText("Re");
+            jLabel5.setText("Im");
+            jLabel1.setText("i");
+            rec=true;
+        }else{
+            System.out.println("B");
+            rec=false;
+            jLabel7.setText("r");
+            jLabel5.setText("θ");
+            jLabel1.setText("");   
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_realActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        if(Integer.parseInt(n.getText())>=2){
         Operaciones A = new Operaciones();
        A.raices(Double.parseDouble(n.getText()), ans);
        jTextArea1.setText("");
@@ -630,35 +719,14 @@ public class Calculadora extends javax.swing.JFrame {
        }else if(Integer.parseInt(n.getText())==1){
            graficar();
        }else if(Integer.parseInt(n.getText())==0)jTextArea1.setText("Undefined");
-       
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if(focused)real.setText(real.getText()+".");
-        else imaginario.setText(imaginario.getText()+".");
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        //if(jComboBox1.getSize()==)
-        //System.out.println(jComboBox1.getSelectedItem());
-        if (jComboBox1.getSelectedItem()=="Forma Rectangular") {
-            //System.out.println("AHHH");
-            jLabel7.setText("Re");
-            jLabel5.setText("Im");
-            jLabel1.setText("i");
-            rec=true;
-        }else{
-            rec=false;
-            jLabel7.setText("r");
-            jLabel5.setText("θ");
-            jLabel1.setText("");   
-        }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void realActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_realActionPerformed
+        this.dispose();
+        GUI_HUB vista = new GUI_HUB();
+        vista.setVisible(true);  
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,11 +781,14 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -732,6 +803,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton nueve;
     private javax.swing.JButton ocho;
     private javax.swing.JButton por;
+    private javax.swing.JTextField pot;
     private javax.swing.JTextField real;
     private javax.swing.JButton siete;
     private javax.swing.JButton tres;

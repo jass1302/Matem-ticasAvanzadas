@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * @author mijum
  */
 public class Complejo {
-    private float re;
-    private float img;
-    private float modulo;
+    private double re;
+    private double img;
+    private double modulo;
     private double angulo;
     private float S;  
     private ArrayList<Double> raices;
@@ -22,8 +22,9 @@ public class Complejo {
     }
     
     public Complejo(double r,double thetha){
-        this.modulo = (float)r;
+        this.modulo = r;
         this.angulo = thetha;
+        polarToRec();
         System.out.println("Modulo: "+this.modulo);
         System.out.println("Angulo: "+this.angulo);
     }
@@ -39,7 +40,7 @@ public class Complejo {
         //float cos = re/getModulo();
         //float sin = img/getModulo();
         //return this.angulo = Math.ceil(Math.toDegrees(Math.atan(sin/cos)));
-        return this.angulo = Math.ceil(Math.toDegrees(Math.atan(this.img/this.re)));
+        return this.angulo = Math.round(Math.toDegrees(Math.atan(this.img/this.re)));
     }
     public void nRaices(int k){
         double α; // Angulo de k-Raices 
@@ -53,35 +54,35 @@ public class Complejo {
     /**
      * @return the re
      */
-    public float getRe() {
+    public double getRe() {
         return re;
     }
 
     /**
      * @return the img
      */
-    public float getImg() {
+    public double getImg() {
         return img;
     }
 
     /**
      * @param re the re to set
      */
-    public void setRe(float re) {
+    public void setRe(double re) {
         this.re = re;
     }
 
     /**
      * @param img the img to set
      */
-    public void setImg(float img) {
+    public void setImg(double img) {
         this.img = img;
     }
 
     /**
      * @return the modulo
      */
-    public float getModulo() {
+    public double getModulo() {
         return modulo;
     }
 
