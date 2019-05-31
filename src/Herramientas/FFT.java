@@ -66,7 +66,7 @@ public class FFT {
         for (int l = 1; l <= nu; l++) {
             while (k < n) {
                 for (int i = 1; i <= n2; i++) {
-                    p = bitreverseReference(k >> nu1, nu);
+                    p = bitinversoReferencia(k >> nu1, nu);
                     arg = constant * p / n;
                     c = Math.cos(arg);
                     s = Math.sin(arg);
@@ -87,7 +87,7 @@ public class FFT {
         k = 0;
         int r;
         while (k < n) {
-            r = bitreverseReference(k, nu);
+            r = bitinversoReferencia(k, nu);
             if (r > k) {
                 tReal = xReal[k];
                 tImag = xImag[k];
@@ -110,7 +110,7 @@ public class FFT {
         return cout;
     }
 
-    private static int bitreverseReference(int j, int nu) {
+    private static int bitinversoReferencia(int j, int nu) {
         int j2;
         int j1 = j;
         int k = 0;

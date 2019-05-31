@@ -85,7 +85,6 @@ public class RK4v2{
 
 
         } catch (Exception e) {
-            //Text.setText("An error occurred: " + e.getMessage());
             return "Error";
 
         }

@@ -209,6 +209,7 @@ public class GUI_HUB extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         SerieFourier FGUI = new SerieFourier();
              FGUI.setTitle("Series de Fourier");
              FGUI.setVisible(true);
@@ -216,6 +217,7 @@ public class GUI_HUB extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         DFT_GUI A = new DFT_GUI();
                 A.setTitle("Transformada discreta de Fourier");
                 A.setVisible(true);
@@ -223,6 +225,7 @@ public class GUI_HUB extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
          FFT_GUI AF = new FFT_GUI();
                 AF.setTitle("Transformada rápida de Fourier");
                 AF.setVisible(true);
