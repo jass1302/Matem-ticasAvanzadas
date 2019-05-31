@@ -1,4 +1,3 @@
-
 package Herramientas;
 import GUI.ScatterPlot;
 import Objetos.ParOrdenado;
@@ -12,39 +11,7 @@ public class Fourier{
     public Trapecio T;
     public int div;
     
-  
-      
-    public double getLimSum() {
-        return limSum;
-    }
 
-    public void setLimSum(double limSum) {
-        this.limSum = limSum;
-    }
-
-    public double getIntervInf() {
-        return limInf;
-    }
-
-    public void setIntervInf(double limInf) {
-        this.limInf = limInf;
-    }
-
-    public double getIntervSup() {
-        return limSup;
-    }
-
-    public void setIntervSup(double limSup) {
-        this.limSup = limSup;
-    }
-
-    public String getFuncion() {
-        return funcion;
-    }
-
-    public void setFuncion(String funcion) {
-        this.funcion = funcion;
-    }
 
     public Fourier(double limSum, double limInf, double limSup, String funcion,int div) {
         this.limSum = limSum;
@@ -70,19 +37,21 @@ public class Fourier{
     }
     
     public double evaluateFX(double xValue){
+        
         double fx = integral()/2;
         for (int i = 1; i < limSum; i++) {
             fx+=(aN(i)*Math.cos(i*Math.PI*xValue/limSup))+(bN(i)*Math.sin(i*Math.PI*xValue/limSup));
         }
+        System.out.println("f("+xValue+")= "+fx);
         return fx;
     }
     
     public String coeficientes(){
         String coef;
-        double fx = integral()/2;
+        double fx = integral()/limSup;
         coef = "a0 = "+fx+"\n";
-        for (int i = 1; i < limSum; i++) {
-            coef += "a"+i+" = "+aN(i)+"   b"+i+" = "+bN(i)+"\n";
+        for (int i = 1; i < limSum+1; i++) {
+            coef += "a"+i+" = "+aN(i)/limSup+"   b"+i+" = "+bN(i)/limSup+"\n";
         }
         return coef;
     }

@@ -6,6 +6,7 @@
 package GUI;
 
 import Herramientas.Fourier;
+import javax.swing.JPanel;
 
 /**
  *
@@ -177,14 +178,29 @@ public class SerieFourier extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Graficar
-        F = new Fourier(Double.parseDouble(jTextField4.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()), jTextField1.getText(),Integer.parseInt(jTextField6.getText()));
+        double i,s;
+        if("-pi".equals(jTextField2.getText()))i = -1*Math.PI;
+        else i = Double.parseDouble(jTextField2.getText());
+        if("pi".equals(jTextField3.getText()))s = Math.PI;
+        else s =Double.parseDouble(jTextField3.getText());
+         F = new Fourier(Double.parseDouble(jTextField4.getText()), i, s, jTextField1.getText(),Integer.parseInt(jTextField6.getText()));
             ScatterPlot plot = new ScatterPlot("Fourier", F.createGraph(Double.parseDouble(jTextField5.getText())));
             plot.pack();
             plot.setVisible(true);
+//        Grafica G = new Grafica("Serie");
+//        G.agregarGrafica("1", F.createGraph(Double.parseDouble(jTextField5.getText())));
+//        JPanel A = G.obtenerGrafica();
+//        A.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        F = new Fourier(Double.parseDouble(jTextField4.getText()), Double.parseDouble(jTextField2.getText()), Double.parseDouble(jTextField3.getText()), jTextField1.getText(),Integer.parseInt(jTextField6.getText()));
+        double i,s;
+        if("-pi".equals(jTextField2.getText()))i = -1*Math.PI;
+        else i = Double.parseDouble(jTextField2.getText());
+        if("pi".equals(jTextField3.getText()))s = Math.PI;
+        else s =Double.parseDouble(jTextField3.getText());
+        F = new Fourier(Double.parseDouble(jTextField4.getText()), i, s, jTextField1.getText(),Integer.parseInt(jTextField6.getText()));
         jTextArea1.setText(F.coeficientes());
     }//GEN-LAST:event_jButton2ActionPerformed
 

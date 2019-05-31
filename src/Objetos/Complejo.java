@@ -25,8 +25,8 @@ public class Complejo {
         this.modulo = r;
         this.angulo = thetha;
         polarToRec();
-        System.out.println("Modulo: "+this.modulo);
-        System.out.println("Angulo: "+this.angulo);
+//        System.out.println("Modulo: "+this.modulo);
+//        System.out.println("Angulo: "+this.angulo);
     }
     
     public Complejo conjugado(){
@@ -48,6 +48,7 @@ public class Complejo {
         for (int i = 0; i < k; i++) {
           α = Math.toDegrees(((2*i*Math.PI)+Math.toRadians(this.angulo))/k);
           α = Math.ceil(α);
+          
          raices.add(α);
         }
     }
@@ -98,7 +99,7 @@ public class Complejo {
     }
     public String toRecString(){
         if(this.img>=0) return "("+this.re+" + "+this.img+"i)";
-        else return "("+this.re+" + "+this.img+"i)";
+        else return "("+this.re+" "+this.img+"i)";
         
     }
     

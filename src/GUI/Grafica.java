@@ -17,12 +17,12 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class ScatterPlot extends JFrame {
+public class Grafica extends JFrame {
   private static final long serialVersionUID = 6294689542092367723L;
 
  
 
-  public ScatterPlot(String title,ArrayList<ParOrdenado> arraa) {
+  public Grafica(String title,ArrayList<ParOrdenado> arraa) {
     super(title);
     XYSeries series = new XYSeries("Fourier");
     XYSeriesCollection dataset = new XYSeriesCollection();
@@ -34,7 +34,7 @@ public class ScatterPlot extends JFrame {
     
 
     // Create chart
-    JFreeChart chart = ChartFactory.createXYLineChart(
+    JFreeChart chart = ChartFactory.createScatterPlot(
         "Fourier", 
         "X-Axis", "Y-Axis", dataset);
 

@@ -16,13 +16,13 @@ public class rungeK {
         this.f = F;
     }
    
-    public ArrayList calcK(int particion){ //Función para obtener los K
+    public ArrayList calcK(double h){ //Función para obtener los K
             JEP objJEP = new JEP();
             objJEP.addStandardFunctions(); //FUNCIONES MATEMATICAS
             objJEP.addStandardConstants(); //CONSTANTES MATEMATICAS
             objJEP.setImplicitMul(true);
         ArrayList<Double[]> ka = new ArrayList<Double[]>();
-        double h = condicionPaso/particion; System.out.println("aaa :"+h);
+        
         double aux10;
 
         for (double i = 0; i <= condicionPaso; i+=h) {
@@ -35,6 +35,7 @@ public class rungeK {
                 objJEP.parseExpression(funcion);
                 k[0] = objJEP.getValue();
             // K2
+                objJEP = new JEP();
                 objJEP.addVariable("x", x0 + (0.5*i));
                 objJEP.parseExpression(funcion);
                 aux10=objJEP.getValue();
@@ -42,6 +43,7 @@ public class rungeK {
                 objJEP.parseExpression(funcion);
                 k[1] = objJEP.getValue();
            // K3
+           objJEP = new JEP();
                objJEP.addVariable("x", x0 + i);
                objJEP.parseExpression(funcion);
                aux10=objJEP.getValue();
@@ -49,6 +51,7 @@ public class rungeK {
                objJEP.parseExpression(funcion);
                k[2] = objJEP.getValue();
            // K4
+           objJEP = new JEP();
                objJEP.addVariable("x", x0 + i);
                objJEP.parseExpression(funcion);
                aux10=objJEP.getValue();
